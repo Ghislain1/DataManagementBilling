@@ -1,8 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
- 
+
 using UserDataManagement.App.Views;
 using UserDataManagement.Services;
- 
+
 
 namespace UserDataManagement.App.ViewModels;
 public class MainViewModel : ViewModelBase
@@ -17,7 +17,7 @@ public class MainViewModel : ViewModelBase
     {
         this.userService = userService;
         this.snackbarMessageQueue = snackbarMessageQueue;
-        this.SelectedItem = this.Pages.FirstOrDefault(); 
+        this.SelectedItem = this.Pages.FirstOrDefault();
     }
     public PageViewModel[] Pages => [new PageViewModel("Dashbord", "Folder", typeof(DashbordView), new DashbordViewModel(this.userService)),
         new PageViewModel("Users", "Users", typeof(UsersView), new UsersViewModel(this.userService)),

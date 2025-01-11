@@ -31,6 +31,7 @@
                 <ToggleButton
                     VerticalAlignment="Center"
                     DockPanel.Dock="Right"
+                    x:Name="DarkModeToggleButton"
                     Style="{StaticResource MaterialDesignSwitchSecondaryToggleButton}" />
                 <StackPanel
                     VerticalAlignment="Center"
@@ -94,7 +95,7 @@
                                 Margin="{Binding MarginRequirement, FallbackValue=16}"
                                 Content="{Binding Content, UpdateSourceTrigger=PropertyChanged, FallbackValue={x:Null}}"
                                 DataContext="{Binding}"
-                                DataContextChanged="OnSelectedItemChanged" />
+                                />
                         </ScrollViewer>
                     </DataTemplate>
                 </TabControl.ContentTemplate>

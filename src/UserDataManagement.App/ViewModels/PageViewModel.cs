@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using System.Windows.Controls;
 using System.Windows;
-using UserDataManagement.App.ViewModels;
+
 
 namespace UserDataManagement.App.ViewModels;
 
@@ -54,6 +50,10 @@ public class PageViewModel : ViewModelBase
 
     private object? CreateContent()
     {
+        if (this.contentType == null)
+        {
+            return null;
+        }
         var content = Activator.CreateInstance(this.contentType);
         if (this.dataContext != null && content is FrameworkElement element)
         {

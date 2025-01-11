@@ -42,13 +42,13 @@ public partial class MainWindow : Window
                 break;
         }
 
-        //DarkModeToggleButton.IsChecked = theme.GetBaseTheme() == BaseTheme.Dark;
+        DarkModeToggleButton.IsChecked = theme.GetBaseTheme() == BaseTheme.Dark;
 
-        //if (paletteHelper.GetThemeManager() is { } themeManager)
-        //{
-        //    themeManager.ThemeChanged += (_, e)
-        //        => DarkModeToggleButton.IsChecked = e.NewTheme?.GetBaseTheme() == BaseTheme.Dark;
-        //}
+        if (paletteHelper.GetThemeManager() is { } themeManager)
+        {
+            themeManager.ThemeChanged += (_, e)
+                => DarkModeToggleButton.IsChecked = e.NewTheme?.GetBaseTheme() == BaseTheme.Dark;
+        }
 
         //Snackbar = MainSnackbar;
     }
@@ -91,11 +91,8 @@ public partial class MainWindow : Window
             }
         }
     }
-    //private void MenuDarkModeButton_Click(object sender, RoutedEventArgs e)
-    //    => ModifyTheme(DarkModeToggleButton.IsChecked == true);
-
-
-
+    private void MenuDarkModeButton_Click(object sender, RoutedEventArgs e)
+        => ModifyTheme(DarkModeToggleButton.IsChecked == true);
     private static void ModifyTheme(bool isDarkTheme)
     {
         var paletteHelper = new PaletteHelper();
@@ -104,15 +101,12 @@ public partial class MainWindow : Window
         theme.SetBaseTheme(isDarkTheme ? BaseTheme.Dark : BaseTheme.Light);
         paletteHelper.SetTheme(theme);
     }
-
-    private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
-    {
-
-    }
-
-
-
     //private void OnSelectedItemChanged(object sender, DependencyPropertyChangedEventArgs e)
     //    => MainScrollViewer.ScrollToHome();
+
+    //private void ContentControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    //{
+    //        MainScrollViewer.ScrollToHome();
+    //}
 }
 
